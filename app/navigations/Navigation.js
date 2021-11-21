@@ -1,26 +1,42 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { Icon } from 'react-native-elements'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import AccountStack from './AccountStack'
 import DashboardStack from './DashboardStack'
 
 import Login from '../screens/account/Login';
 import { Dashboard } from '../screens/Dashboard';
+import PetListStack from './PetListStack';
 
-const Stack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator()
 
 export default function Navigation() {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen 
+            <Tab.Navigator
+                initialRouteName = "Home"
+                screenOptions = { ({ route }) => ({
+                    tabBarIcon: ({ color }) => screenOptions(route, color),
+                    inactiveTintColor: '#646464',
+                    activeTintColor: '#00a680'
+                }) }
+            >
+                <Tab.Screen 
                     name="Login" 
                     component={Login} 
                     options={{ headerShown: false }}
                 />
-                <Stack.Screen name="Home" component={Dashboard} />
+                <Tab.Screen 
+                    name="Home" 
+                    component={Dashboard} 
+                />
+                {/* <Tab.Screen 
+                    name="Test" 
+                    component={Dashboard} 
+                    options = {{ title: 'Mi Test' }} 
+                    /> */}
                 {/* <Stack.Screen 
                     name = "accountStack" 
                     component = { AccountStack }  
@@ -31,12 +47,12 @@ export default function Navigation() {
                     component = { DashboardStack }  
                     options = {{ title: 'Inicio' }} 
                 /> */}
-                {/* <Tab.Screen
+                <Tab.Screen
                     name = "petListStack" 
                     component = { PetListStack } 
                     options = {{ title: 'Mis Mascotas' }} 
-                /> */}
-            </Stack.Navigator>
+                />
+            </Tab.Navigator>
         </NavigationContainer>
     )
 }
