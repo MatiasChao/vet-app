@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
@@ -6,8 +6,6 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { auth } from '../../firebase/firebase'
 
 export default function Login() {
-
-    const toastRef = useRef()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
