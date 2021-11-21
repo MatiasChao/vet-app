@@ -1,10 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, Image, KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native'
-import { Divider } from 'react-native-elements'
+import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import LoginForm from '../../components/account/LoginForm'
-// import Toast from 'react-native-easy-toast'
-// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { auth } from '../../firebase/firebase'
@@ -63,7 +59,11 @@ export default function Login() {
             style={styles.container}
             behavior='padding'
         > 
-           
+            {/* <Image 
+                source = {require('../../../assets/img/logo.png')} 
+                resizeMode = 'contain'
+                style = { styles.logo }
+            /> */}
 
             <View style={styles.inputContainer}>
                 <TextInput
@@ -97,36 +97,6 @@ export default function Login() {
             </View>
 
             <Text>{user?.email}</Text>
-
-            {/* <Image 
-                source = {require('../../../assets/img/logo.png')} 
-                resizeMode = 'contain'
-                style = { styles.logo }
-            /> */}
-            {/* <View style = { styles.viewCointainer }>
-                <LoginForm
-                    toastRef = { toastRef }
-                /> */}
-                
-                {
-                    /**
-                     * ESTO no lo van a usar en Los2Carlitos
-                     * <CreateAccount />
-                     */
-                }
-                
-            {/* </View> */}
-            {
-                /**
-                 * <Divider style = { styles.divider } />
-                 */
-            }
-            
-            {/* <Toast 
-                ref = { toastRef }
-                position = 'center'
-                opacity = { 0.9 }
-            /> */}
         </KeyboardAvoidingView>
     )
 }

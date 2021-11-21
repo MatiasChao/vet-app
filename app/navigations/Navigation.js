@@ -30,7 +30,8 @@ export default function Navigation() {
                 />
                 <Tab.Screen 
                     name="Home" 
-                    component={Dashboard} 
+                    component={ DashboardStack } 
+                    options={{ headerShown: false }}
                 />
                 {/* <Tab.Screen 
                     name="Test" 
@@ -48,9 +49,9 @@ export default function Navigation() {
                     options = {{ title: 'Inicio' }} 
                 /> */}
                 <Tab.Screen
-                    name = "petListStack" 
+                    name = "Mis Mascotas" 
                     component = { PetListStack } 
-                    options = {{ title: 'Mis Mascotas' }} 
+                    options={{ headerShown: false }}
                 />
             </Tab.Navigator>
         </NavigationContainer>
@@ -61,13 +62,13 @@ function screenOptions(route, color) {
     let iconName;
 
     switch (route.name) {
-        case "dashboardStack":
+        case "Home":
             iconName = "home"
             break;
         case "accountStack":
             iconName = "account"
             break;
-        case "petListStack":
+        case "Mis Mascotas":
             iconName = "paw"
             break;
         default:
