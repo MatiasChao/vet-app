@@ -6,11 +6,11 @@ import { useNavigation } from '@react-navigation/native'
 
 import { validateEmail } from '../../utils/validations'
 // import Loading from '../Loading'
-import { app } from '../../firebase/firebase'
+// import { app } from '../../firebase/firebase'
 
-export default function LoginForm (props: { toastRef: any }) {
+export default function LoginForm () {
 
-    const { toastRef } = props
+    // const { toastRef } = props
 
     const [showPassword, setShowPassword] = useState(false)
     const [formData, setFormData] = useState(defaultFormDataValue())
@@ -24,9 +24,9 @@ export default function LoginForm (props: { toastRef: any }) {
 
     const onSubmit = () => {
         if(formData.email === '' || formData.password === '') {
-            toastRef.current.show('Todos los campos son obligatorios')
+            // toastRef.current.show('Todos los campos son obligatorios')
         } else if (!validateEmail(formData.email)) {
-            toastRef.current.show('El email no es correcto')
+            // toastRef.current.show('El email no es correcto')
         } else {
             setLoading(true)
             // app

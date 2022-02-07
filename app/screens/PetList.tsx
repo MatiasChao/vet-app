@@ -2,6 +2,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
 import { Text , View, StyleSheet } from 'react-native'
 import { ListItem, Avatar, Button } from 'react-native-elements'
+import AddPetModal from '../components/modals/AddPetModal';
 import { auth } from '../firebase/firebase';
 
 import PetService from '../services/pet.service';
@@ -18,6 +19,7 @@ export const PetList = ({}) => {
     }
     const [petList, setPetList] = useState([pet])
     const [user, setUser] = useState({})
+    const [addPetModal, setAddPetModal] = useState(false);
 
     useEffect(() => {
         // getAllPetsByUserId();
@@ -58,8 +60,13 @@ export const PetList = ({}) => {
             <Button
                 title="Agregar mascota"
                 type="outline"
+                onPress={() => setAddPetModal(true)}
                 />
             </View>
+
+            {
+                addPetModal &&  <AddPetModal addPetModal = { addPetModal } setAddPetModal = { setAddPetModal } />
+            }
         </View>
     )
 }

@@ -16,7 +16,7 @@ export default function Login() {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if(user) {
-                navigation.navigate('Home')
+                navigation.navigate('dashboaord')
             }
         })
         return unsubscribe;
@@ -36,32 +36,29 @@ export default function Login() {
     }
 
     const login = async () => {
-        try {
-            const user = await signInWithEmailAndPassword(auth, email, password)
-            .then(userCredentials => {
-                const user = userCredentials.user;
-                console.log("USER: ", user)
-            });
-            // console.log("USER: ", user)
-        } catch (error) {
-            console.log("Error al registrarse: ", error)
-        }
+        await signInWithEmailAndPassword(auth, email, password)
+        .then(userCredentials => {
+            const user = userCredentials.user;
+            navigation.navigate('dashboaord')
+            console.log("USER: ", user)
+        })
+        .catch((error) => {
+            console.log("Error al iniciar sesión: ", error)
+        })
     }
 
-    const logout = async () => {
-           await signOut(auth);
-    }
+ 
 
     return(
         <KeyboardAvoidingView
             style={styles.container}
             behavior='padding'
         > 
-            {/* <Image 
-                source = {require('../../../assets/img/logo.png')} 
+            <Image 
+                source = {require('../../../assets/appet.jpeg')} 
                 resizeMode = 'contain'
                 style = { styles.logo }
-            /> */}
+            />
 
             <View style={styles.inputContainer}>
                 <TextInput
@@ -71,7 +68,7 @@ export default function Login() {
                     style={styles.input}
                 />
                 <TextInput
-                    placeholder='Password'
+                    placeholder='Contraseña'
                     value={password}
                     onChangeText={text => setPassword(text)}
                     style={styles.input}
@@ -87,7 +84,7 @@ export default function Login() {
                     <Text style={styles.buttonText}>Entrar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => register()}
+                    onPress={() => navigation.navigate('type-user')}
                     style={[styles.button, styles.buttonOutline]}
                 >
                     <Text style={styles.buttonOutlineText}>Registrarme</Text>
@@ -99,21 +96,21 @@ export default function Login() {
     )
 }
 
-// function CreateAccount() {
+function CreateAccount() {
 
-//     const navigation = useNavigation()
+    const navigation = useNavigation()
 
-//     return (
-//         <Text style={styles.textRegister}>
-//             ¿Aún no tienes una cuenta? { ' ' }
-//             <Text
-//                 style={styles.btnRegister}
-//                 onPress={() => navigation.navigate('register')}>
-//                 Regístrate
-//             </Text>
-//         </Text>
-//     )
-// }
+    return (
+        <Text style={styles.textRegister}>
+            ¿Aún no tienes una cuenta? { ' ' }
+            <Text
+                style={styles.btnRegister}
+                onPress={() => navigation.navigate('register')}>
+                Regístrate
+            </Text>
+        </Text>
+    )
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -163,7 +160,8 @@ const styles = StyleSheet.create({
     logo: {
         width: '100%',
         height: 130,
-        marginTop: 10
+        marginTop: 10,
+        marginBottom: 40
     },
     viewCointainer: {
         marginRight: 40,
