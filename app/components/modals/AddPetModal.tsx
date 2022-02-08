@@ -1,69 +1,27 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { Overlay, Input, Button } from 'react-native-elements'
+import CreatePet from './CreatePet';
+import DrawerNavigator from "./CreatePet";
+
 
 export default function AddPetModal ({addPetModal, setAddPetModal}) {
 
  
     return (
         <Overlay isVisible={addPetModal} onBackdropPress={() => setAddPetModal(!addPetModal)}>
-            <View style = { styles.viewForm }>    
-                <Input 
-                    placeholder = 'Nombre'
-                    containerStyle = { styles.input }
-                    // onChange = { e => onChangeSetArticle(e.nativeEvent.text, 'articleName') }
-                />
-                <Text>Lista animales</Text>
-                <Text>Lista razas dependiendo animal que elije</Text>
-                {/* <View style = { styles.container }>
-                    <CheckBox
-                        center
-                        title='Kilogramo'
-                        checkedIcon='dot-circle-o'
-                        uncheckedIcon='circle-o'
-                        containerStyle = { styles.checkbox }
-                        checked={article.articleWeightType === 'kilogramo'}
-                        onPress = { e => onChangeSetArticle('kilogramo', 'articleWeightType') }
+            <ScrollView>
+                <View style={styles.viewForm}>
+                    <CreatePet />
+                    <Button
+                        title='Agregar mascota'
+                        containerStyle={styles.btnAddArticle}
+                        buttonStyle={styles.btnSendOrder}
+                        onPress={() => console.log()}
                     />
-                    <CheckBox
-                        center
-                        title='Tira'
-                        checkedIcon='dot-circle-o'
-                        uncheckedIcon='circle-o'
-                        containerStyle = { styles.checkbox }
-                        checked={article.articleWeightType === 'tira'}
-                        onPress = { e => onChangeSetArticle('tira', 'articleWeightType') }
-                    />
-                </View> */}
-                {/* <View style = { styles.container }>
-                    <CheckBox
-                        center
-                        title='Unidad'
-                        checkedIcon='dot-circle-o'
-                        uncheckedIcon='circle-o'
-                        containerStyle = { styles.checkbox }
-                        checked={article.articleWeightType === 'unidad'}
-                        onPress = { e => onChangeSetArticle('unidad', 'articleWeightType') }
-                    />
-                </View> */}
-                {/* <Input 
-                    placeholder = 'Cantidad'
-                    containerStyle = { styles.input }
-                    onChange = { e => onChangeSetArticle(e.nativeEvent.text, 'articleCount') }
-                /> */}
-                {/* {
-                    showAddArticleError && 
-                    <Text style = { styles.textAddArticleError }>
-                        Los campos no pueden ser vacios
-                    </Text>
-                } */}
-                <Button 
-                    title = 'Agregar mascota'
-                    containerStyle = { styles.btnAddArticle }
-                    buttonStyle = { styles.btnSendOrder }
-                    onPress = { () => console.log() }
-                />
-            </View>
+                </View>
+            </ScrollView>
+           
         </Overlay>
     )
 }
