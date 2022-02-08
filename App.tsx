@@ -1,14 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, PermissionsAndroid } from 'react-native';
-import VeteMap from './components/VeteMap';
+import CreateMedicFile from './components/CreatePet';
 export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Empezando a crear esa APP</Text>
       <View style={styles.mapConatiner}>
-        {/* <VeteMap /> */}
+        <CreateMedicFile />
       </View>
       {/* </View> */}
       <StatusBar style="auto" />

@@ -12,9 +12,11 @@
     "expo-status-bar": "~1.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-hook-form": "^7.25.3",
     "react-native": "0.64.3",
     "react-native-maps": "^0.29.4",
     "react-native-permissions": "3.0.1",
+    "react-native-tailwindcss": "^1.1.11",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
