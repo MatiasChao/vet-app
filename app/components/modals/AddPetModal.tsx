@@ -1,27 +1,24 @@
 import React from 'react'
 import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { Overlay, Input, Button } from 'react-native-elements'
-import CreatePet from './CreatePet';
-import DrawerNavigator from "./CreatePet";
+import CreatePet from '../forms/CreatePet';
+import DrawerNavigator from "../forms/CreatePet";
 
 
-export default function AddPetModal ({addPetModal, setAddPetModal}) {
+export default function AddPetModal ({addPetModal, setAddPetModal, setPetList}) {
 
- 
+    const addPet = (data: any) => {
+        console.log("aca llega?")
+        setPetList(data);
+    }
+
     return (
         <Overlay isVisible={addPetModal} onBackdropPress={() => setAddPetModal(!addPetModal)}>
             <ScrollView>
                 <View style={styles.viewForm}>
-                    <CreatePet />
-                    <Button
-                        title='Agregar mascota'
-                        containerStyle={styles.btnAddArticle}
-                        buttonStyle={styles.btnSendOrder}
-                        onPress={() => console.log()}
-                    />
+                    <CreatePet setPetList = {addPet} />
                 </View>
             </ScrollView>
-           
         </Overlay>
     )
 }
