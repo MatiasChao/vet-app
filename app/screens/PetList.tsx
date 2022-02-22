@@ -13,10 +13,12 @@ export const PetList = ({}) => {
         id: '12345',
         name: 'Hammer',
         photo: "require('../../assets/hammer.jpeg')",
-        owner: 'owner.id',
-        weight: 33,
-        breed: 'Bulldog Inglés'
-    }
+        especie: 'Perro',
+        nacimiento: "nacimiento",
+        raza : 'Bulldog Inglés',
+        edad: "20",
+        sexo : "masculino"
+      }
     const [petList, setPetList] = useState([pet])
     const [user, setUser] = useState({})
     const [addPetModal, setAddPetModal] = useState(false);
@@ -31,6 +33,12 @@ export const PetList = ({}) => {
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     });
+
+    const addPetList = (pet : any) => {
+        console.log("datazo?", pet);
+        setPetList([...petList,pet]);
+        setAddPetModal(false)
+    }
 
     const getAllPetsByUserId = async () => {
         try {
@@ -65,7 +73,7 @@ export const PetList = ({}) => {
             </View>
 
             {
-                addPetModal &&  <AddPetModal addPetModal = { addPetModal } setAddPetModal = { setAddPetModal } />
+                addPetModal &&  <AddPetModal addPetModal = { addPetModal } setAddPetModal = { setAddPetModal } setPetList = {addPetList} />
             }
         </View>
     )

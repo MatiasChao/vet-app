@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AccountStack from './AccountStack'
 import DashboardStack from './DashboardStack'
 import PetListStack from './PetListStack';
+import MedicalFileStack from './MedicalFileStack';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const Tab = createBottomTabNavigator()
@@ -43,12 +44,25 @@ export default function TabNavigator() {
                         component={DashboardStack}
                         options={{
                             headerShown: false,
+                            tabBarButton: () => null,
+                            tabBarVisible:false //hide tab bar on this screen
                         }}
                     />
                     <Tab.Screen
                         name="petStack"
                         component={PetListStack}
                         options={{
+                            headerShown: false,
+                            tabBarButton: () => null,
+                            tabBarVisible:false //hide tab bar on this screen
+                        }}
+                    />
+                     <Tab.Screen
+                        name="medStack"
+                        component={MedicalFileStack}
+                        options={{
+                            tabBarButton: () => null,
+                            tabBarVisible:false, //hide tab bar on this screen,
                             headerShown: false,
                         }}
                     />
